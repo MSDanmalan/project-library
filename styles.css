@@ -21,18 +21,26 @@ button:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+    background-color: #083344;
 }
 
 .header div:first-child {
     font-family: myFont;
     font-size: 5em;
     font-weight: 700;
+    color: #f1f5f9;
 }
 
 .addBook {
     border: none;
     padding: 10px 30px;
     border-radius: 8px;
+    opacity: 0.8;
+    background-color: #cbd5e1;
+}
+
+.addBook:hover {
+    opacity: 1;
 }
 
 .header div:last-child {
@@ -46,7 +54,8 @@ button:hover {
 }
 
 .bookSection {
-    background-color: #e2e8f0;
+    min-height: 80vh;
+    background-color: #cbd5e1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
@@ -54,30 +63,82 @@ button:hover {
 }
 
 .card {
-    height: 200px;
-    background-color: white;
+    min-height: 200px;
+    max-height: 300px;
+    background-color: #f1f5f9;
+    color: black;
     padding: 15px;
     display: grid;
     border-radius: 8px;
     align-items: center;
 }
 
-.card div:first-child {
+.titleDisplay {
     font-weight: bold;
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
-.card div:last-child {
-    justify-self: end;
+.authorDisplay {
+    overflow: hidden;
+}
+
+.pagesDisplay {
+    overflow: hidden;
+}
+
+.cardButtons {
     align-items: end;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
+.cardButtons button {
+    border: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    opacity: 0.8;
+}
+
+.readButton {
+    border: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    opacity: 0.8;
+    background-color: #cbd5e1;
+    font-weight: 700;
+    color: black;
+}
+
+.readButton:hover {
+    scale: 1.1;
+    transition: 0.3s;
+}
+
+.readButton.read {
+    background-color: #22c55e;
+    font-weight: 700;
+    color: white;
+}
+
+.removeButton {
+    font-weight: 700;
+    color: black;
+    background-color: #e2e8f0;
+}
+
+.removeButton:hover {
+    scale: 1.1;
+    transition: 0.3s;
+}
+
 .footer {
     margin-top: auto; 
     text-align: center;
     font-size: small;
+    background-color: #083344;
+    color: white;
 }
 
 /* Add book form */
@@ -87,11 +148,13 @@ button:hover {
     width: 300px;
     padding: 10px;
     border-radius: 8px;
-    background-color: #e2e8f0;
-    position: absolute;
+    background-color: #083344;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    transition: 0.3s;
+    z-index: 2;
 }
 
 .bookDetails {
@@ -105,7 +168,7 @@ button:hover {
 
 .bookForm form input {
     display: grid;
-    width: 90%;
+    width: 100%;
     padding: 10px;
     margin: 5px 0 22px 0;
     border: none;
@@ -114,12 +177,31 @@ button:hover {
 }
 
 .bookForm form input:focus {
-    background-color: #ddd;
+    background-color: #cbd5e1;
     outline: none;
 }
 
-.add, 
-.cancel{
+.readCheck {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.readCheck label {
+    padding: 4px;
+    font-size: large;
+    color: white;
+}
+
+.checkbox {
+    max-width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: white;
+  }
+
+.addButton, 
+.cancelButton{
     background-color: #04AA6D;
     color: white;
     padding: 16px 20px;
@@ -131,11 +213,22 @@ button:hover {
     width: 90%;
 }
 
-.cancel {
+.cancelButton {
     background-color: red;
 }
 
-.add:hover, 
-.cancel:hover {
+.addButton:hover, 
+.cancelButton:hover {
     opacity: 1;
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+    z-index: 1;
 }
