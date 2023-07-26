@@ -26,7 +26,8 @@ button:hover {
 
 .header div:first-child {
     font-family: myFont;
-    font-size: 5em;
+    padding: 15px;
+    font-size: 4em;
     font-weight: 700;
     color: #f1f5f9;
 }
