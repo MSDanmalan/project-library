@@ -1,16 +1,23 @@
+// Reminder
+// Make sure to complete step 5 and 6 of projext assignment
+
 let myLibrary = []
 
-function Book(title, author, pages) {
+class Book {
+    constructor (title, author, pages) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.readBook = () => {
+    };
+
+    readBook = () => {
         if(this === 'read') {
             return 'Read'
         };
         return 'Not read yet'
     };
-    this.info = () => {
+    
+    info = () => {
         return title + ' ' + author + ' ' + pages + ' ' + this.readBook()
     };
 };
